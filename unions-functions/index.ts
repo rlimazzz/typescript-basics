@@ -12,9 +12,27 @@ let firstUser : User = {
     role: "guest"
 }
 
-//We can also specify a type for our function return like in typed languages
-function testingReturnType(user : User) : string {
+/*
+We can also specify a type for our function return like in typed languages we can also return string,
+number, any, void(does not return anything), undefined values, something that is interesting is that you
+can also use unions on functions return type
+*/
+function testingReturnType(user : User) : string | User{
+    if(user.username == "rlimazzz") {
+        return firstUser
+    }
     return user.username
+}
+
+//Case of using void 
+let userList : User[] = new Array()
+function addUser(user : User) : void {
+    userList.push(user)
+}
+
+addUser(firstUser)
+for(let i : number = 0;i < userList.length;i++) {
+    console.log(userList[i])
 }
 
 console.log(testingReturnType(firstUser))
